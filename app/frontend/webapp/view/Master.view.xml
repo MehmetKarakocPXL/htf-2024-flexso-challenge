@@ -37,6 +37,23 @@
             </f:DynamicPageHeader>
         </f:header>
         <f:content>
+           
+            <List
+                id="galaxyList"
+                items="{/KnownGalaxies}"
+                mode="SingleSelectMaster"
+                includeItemInSelection="true"
+                growing="false"
+                selectionChange=".onSelectionChange"
+                width="70%"
+            >
+                <StandardListItem
+                    title="{name}"
+                    description="{distance} Million Light Years"
+                    icon="sap-icon://world"
+                    type="Active"
+                />
+            </List>
         </f:content>
     </f:DynamicPage>
 </mvc:View>
