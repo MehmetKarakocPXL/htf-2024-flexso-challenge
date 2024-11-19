@@ -34,6 +34,19 @@ export default class Master extends Controller {
             console.error("Model is not set on the Component.");
             return;
         }
+        this._calculateDrakeValue("<GALAXY_ID>");
         this.getView().setModel(oModel);
+    }
+    
+    private async _calculateDrakeValue(galaxyId: string): Promise<void> {
+        try {
+            const response = await fetch(`/drake-service/calculateDrakeValue?galaxyId=${galaxyId}`);
+            const drakeValue = await response.json();
+
+            console.log(`Drake Value for Galaxy ${galaxyId}:`, drakeValue);
+            // Update model or UI based on result
+        } catch (error) {
+            console.error("Error calculating Drake Value:", error);
+        }
     }
 }
